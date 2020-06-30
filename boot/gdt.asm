@@ -6,6 +6,7 @@
 ;
 ; boot/gdt.asm:
 ; Bootloader utility file
+;
 
 gdt_start: ; The GDT starts with a null 8-byte
     dd 0x0 ; 4 byte

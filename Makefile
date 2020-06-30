@@ -6,7 +6,8 @@
 #
 
 #
-# Run make run to compile and run
+# Run 'make run' to compile and run, configure with
+# your own cross compiling compiler
 #
 
 # Compiler version selection
@@ -90,4 +91,3 @@ $(BUILD)/boot/entry.o: boot/entry.asm
 # is also needed if we change one them
 $(OBJ): $(CSOURCES) $(CHEADERS) 
 	$(CC) $(CFLAGS) -c $(patsubst %.o,%.c,$(patsubst build/%,%,$@)) -o $@
-

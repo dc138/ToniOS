@@ -6,6 +6,7 @@
 ;
 ; boot/entry.asm:
 ; Defines a bridge way to call C code from within assembly
+;
 
 [bits 32]
 [extern entry] ; Define calling point as an external symbol for the linker
