@@ -4,7 +4,6 @@
 
     See attached LICENSE file for more info.
 
-
     kernel/entry.c:
     Kernel entry file 
 
@@ -14,5 +13,6 @@
 
 void entry() {  // Defines the entry point for the kernel
     print("Kernel started!");
-    return;
+
+    __asm__("hlt");  // Temporary
 }

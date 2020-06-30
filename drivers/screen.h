@@ -4,7 +4,6 @@
 
     See attached LICENSE file for more info
 
-
     drivers/screen.h:
     Main kernel API screen divers prototypes 
 

@@ -4,7 +4,6 @@
 
     See attached LICENSE file for more info.
 
-
     drivers/ports.c:
     Defines a way for the kernel to communicate with IO through ports 
 

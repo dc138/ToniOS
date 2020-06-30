@@ -4,7 +4,6 @@
 
     See attached LICENSE file for more info.
 
-
     drivers/screen.c:
     Defines a way for the kernel to more easily print to the screen 
 
