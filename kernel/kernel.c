@@ -1,11 +1,11 @@
 /* 
     MIT License
     (c) Antonio de Haro, 2020
+
     See attached LICENSE file for more info.
 
 
     kernel/entry.c:
-
     Kernel entry file 
 
 */

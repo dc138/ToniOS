@@ -1,11 +1,11 @@
 /* 
     MIT License
     (c) Antonio de Haro, 2020
+
     See attached LICENSE file for more info.
 
 
     drivers/ports.h:
-
     Main kernel API port divers prototypes 
 
 */
