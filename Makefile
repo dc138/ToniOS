@@ -56,7 +56,7 @@ clean:
 # File specific rules
 
 # Rule to create the final OS image by contatenation, not that the 
-# build directoryies must be built first
+# build directoryies must be created first
 $(TARGET): $(BUILD) $(BUILDDIRS) $(BUILD)/boot/boot.bin $(BUILD)/kernel/kernel.bin
 	cat $(BUILD)/boot/boot.bin $(BUILD)/kernel/kernel.bin > $(TARGET)
 

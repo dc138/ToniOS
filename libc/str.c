@@ -11,8 +11,17 @@
 
 #include <libc/str.h>
 
+/* Get the lenght of a null terminated string */
+int strlen(char str[]) {
+    int i = 0;
+    while (str[i] != '\0') {
+        ++i;
+    }
+    return i;
+}
+
 /* Used to transform an integer to a base10 string */
-void itos(int num, char* str) {
+void itos(int num, char str[]) {
     int i = 0, sign;
 
     if ((sign = num) < 0) num = -num;

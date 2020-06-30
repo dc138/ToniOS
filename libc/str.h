@@ -12,7 +12,9 @@
 #ifndef LIB_STR
 #define LIB_STR
 
-/* String manipulation rutines */
-void itos(int num, char* str);
+/* String rutines */
+int strlen(char str[]);
+
+void itos(int num, char str[]);
 
 #endif
