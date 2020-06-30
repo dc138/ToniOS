@@ -15,16 +15,13 @@ void entry() {  // Defines the entry point for the kernel
     clear();
 
     set_color(COLOR(LIGHT_GREY, BLACK));
-    print("\nWellcome to ");
+    print("Wellcome to ");
 
     set_color(COLOR(WHITE, BLACK));
     print("ToniOS");
 
     set_color(COLOR(LIGHT_GREY, BLACK));
-    print("!");
-
-    set_color(COLOR(WHITE, BLACK));
-    print("\nTest.");
+    print("!\n");
 
     __asm__("hlt");  // Temporary
 }

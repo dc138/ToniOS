@@ -5,6 +5,10 @@
 # See attached LICENSE file for more info.
 #
 
+#
+# Run make run to compile and run
+#
+
 # Compiler version selection
 
 QEMU := /usr/bin/qemu-system-i386
@@ -27,6 +31,7 @@ OBJ := $(patsubst ./%,build/%,$(CSOURCES:.c=.o)) # Fixing up the directory to in
 # Target file to build
 
 BUILD := build
+BUILDDIRS := $(BUILD)/boot $(BUILD)/cpu $(BUILD)/drivers $(BUILD)/kernel $(BUILD)/libc
 TARGET := $(BUILD)/ToniOS.img
 
 
@@ -42,16 +47,25 @@ debug: $(TARGET) $(BUILD)/kernel/kernel.elf
 	$(GDB) -ex "symbol-file $(BUILD)/kernel/kernel.elf" -ex "set arch i386" -ex "target remote localhost:1234" -ex "b kernel.c:entry" -ex "c"
 
 clean:
-	find build/ -type f -name '*' -delete
+	rm -rfv build/
 
 .PHONY: all run debug clean
 
 
 # File specific rules
 
-# Rule to create the final OS image by contatenation
-$(TARGET): $(BUILD)/boot/boot.bin $(BUILD)/kernel/kernel.bin
-	cat $^ > $(TARGET)
+# Rule to create the final OS image by contatenation, not that the 
+# build directoryies must be built first
+$(TARGET): $(BUILD) $(BUILDDIRS) $(BUILD)/boot/boot.bin $(BUILD)/kernel/kernel.bin
+	cat $(BUILD)/boot/boot.bin $(BUILD)/kernel/kernel.bin > $(TARGET)
+
+# Rule to generate build directory
+$(BUILD):
+	mkdir $@
+
+# Rule to generate build directorys
+$(BUILDDIRS):
+	mkdir $@
 
 # Compiling the bootloader from its only source
 $(BUILD)/boot/boot.bin: boot/boot.asm
