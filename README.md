@@ -18,7 +18,7 @@ target the i386 arhitecture. The C code has been compiled with the -ffreestandin
 compiler flag to make it embedeable and, as such, this project has no
 dependencies.
 
-It follows a monolithic kernel design written in C. As well as a 16bit 
+It follows a monolithic kernel design written in C. As well as a 16-bit 
 bootloader capable of booting with a BIOS. 
 
 A UEFI booting system, as well as other procesor architectures/platforms are 
