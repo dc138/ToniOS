@@ -1,0 +1,13 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Hello, thanks for taking the time to publish an issue with this repository! Please, make shure that you provide helpfull information so that we can help you!'
+        pr-message: 'Hello, thanks for taking the time to contribute to this repository! Please, make sure that you have followed the current format standard for the project :)'
