@@ -1,6 +1,6 @@
 /* 
     MIT License
-    (c) Antonio de Haro, 2020
+    (c) Antonio de Haro 2020
 
     See attached LICENSE file for more info
 
@@ -24,30 +24,25 @@
 /* Generate a color constant from a background and foreground */
 #define COLOR(fg, bg) (fg | bg << 4)
 
-/* Color constants */
-enum vga_color {
-    BLACK = 0,
-    BLUE = 1,
-    GREEN = 2,
-    CYAN = 3,
-    RED = 4,
-    MAGENTA = 5,
-    BROWN = 6,
-    LIGHT_GREY = 7,
-    DARK_GREY = 8,
-    LIGHT_BLUE = 9,
-    LIGHT_GREEN = 10,
-    LIGHT_CYAN = 11,
-    LIGHT_RED = 12,
-    LIGHT_MAGENTA = 13,
-    LIGHT_BROWN = 14,
-    WHITE = 15,
-};
+/* Color values for reference, see screen.c:print() for more info */
+#define BLACK 0x0
+#define BLUE 0x1
+#define GREEN 0x2
+#define CYAN 0x3
+#define RED 0x4
+#define MAGENTA 0x5
+#define BROWN 0x6
+#define LIGHT_GREY 0x7
+#define DARK_GREY 0x8
+#define LIGHT_BLUE 0x9
+#define LIGHT_GREEN 0xA
+#define LIGHT_CYAN 0xB
+#define LIGHT_RED 0xC
+#define LIGHT_MAGENTA 0xD
+#define LIGHT_BROWN 0xE
+#define WHITE 0xF
 
 /* Kernel interface API */
-void set_color(char c);
-char get_color();
-
 void clear();
 
 void print_at(char* message, int col, int row);

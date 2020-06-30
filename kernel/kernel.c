@@ -15,14 +15,8 @@
 void entry() {  // Defines the entry point for the kernel
     clear();
 
-    set_color(COLOR(LIGHT_GREY, BLACK));
-    print("\nWellcome to ");
-
-    set_color(COLOR(WHITE, BLACK));
-    print("ToniOS");
-
-    set_color(COLOR(LIGHT_GREY, BLACK));
-    print("!\n\n\n");
+    print("\n\033F0Wellcome to \033A0ToniOS\033F0!\n\n\n");
+    print("\03370$ ");
 
     __asm__ __volatile__("hlt");  // Temporary
 }

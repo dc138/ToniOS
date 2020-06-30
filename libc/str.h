@@ -16,5 +16,7 @@
 int strlen(char str[]);
 
 void itos(int num, char str[]);
+char htoc(char ch);
+int htoi(char str[]);
 
 #endif

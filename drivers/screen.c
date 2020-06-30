@@ -12,6 +12,7 @@
 #include <drivers/ports.h>
 #include <drivers/screen.h>
 #include <libc/mem.h>
+#include <libc/str.h>
 
 /*
 _________________________
@@ -28,6 +29,8 @@ _________________________
 
 /* The currrent color used to write to the screen */
 static char current_color = COLOR(WHITE, BLACK);
+static char last_char = ' ';
+static char count = 0;
 
 /* Gets the current cursor's position */
 static inline int get_cursor() {
@@ -51,8 +54,8 @@ static inline void set_cursor(int offset) {
     byte_out(VIDEO_DATA, (unsigned char)(offset & 0xff));
 }
 
-/* Prints a single character and returns the offset to the next one */
-static int charprint(char c, int col, int row) {
+/* Prints a single character and returns the offset to the next one. */
+static int char_print(char c, int col, int row) {
     unsigned char *video = (unsigned char *)VIDEO_ADDRESS;
 
     if (col >= MAX_COLS || row >= MAX_ROWS) {
@@ -66,6 +69,14 @@ static int charprint(char c, int col, int row) {
     if (c == '\n') {
         row = OFFSET_ROW(offset);
         offset = OFFSET(0, row + 1);
+    } else if (c == '\033') {
+        count = 2;
+    } else if (count == 2) {  // First color char, indicates foreground
+        last_char = c;
+        count--;
+    } else if (count == 1) {  // Sencond color char, indicates background
+        current_color = COLOR(htoc(last_char), htoc(c));
+        count--;
     } else {
         video[offset] = c;
         video[offset + 1] = current_color;
@@ -98,16 +109,6 @@ _________________________
 
 */
 
-/* Set the current color for writting to the screen */
-void set_color(char c) {
-    current_color = c;
-}
-
-/* Get the current color for writting to the screen */
-char get_color() {
-    return current_color;
-}
-
 /* Clears the screen with blank characters */
 void clear() {
     char *screen = (char *)VIDEO_ADDRESS;
@@ -121,9 +122,11 @@ void clear() {
 }
 
 /* 
-   Prints a string on a specified location, if colum or
-   row are negative, the character will be printed on 
-   the cursor
+    Prints a string on a specified location, if colum or row are negative, 
+    the character will be printed on the cursor. To use color formatting 
+    use the escape secuence \033BF, where B and F are hex values and represent 
+    the background and foreground color of the following text. This is reset
+    on every new print call.
 */
 void print_at(char *message, int col, int row) {
     int offset;
@@ -137,11 +140,13 @@ void print_at(char *message, int col, int row) {
     }
 
     for (int i = 0; message[i] != 0; i++) {
-        offset = charprint(message[i], col, row);
+        offset = char_print(message[i], col, row);
 
         row = OFFSET_ROW(offset);
         col = OFFSET_COL(offset);
     }
+
+    current_color = COLOR(WHITE, BLACK);  // Reset color in case it has been changed
 }
 
 /* Prints a string on the cursor's position */
