@@ -1,3 +1,15 @@
+/* 
+    MIT License
+    (c) Antonio de Haro, 2020
+    See attached LICENSE file for more info.
+
+
+    drivers/screen.c:
+
+    Defines a way for the kernel to more easily print to the screen 
+
+*/
+
 #include <drivers/ports.h>
 #include <drivers/screen.h>
 

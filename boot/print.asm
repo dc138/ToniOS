@@ -1,3 +1,12 @@
+;
+; MIT License
+; (c) Antonio de Haro, 2020
+;
+; See attached LICENSE file for more info.
+;
+; boot/print.asm;
+; Bootloader utility file
+
 ; Takes a null terminated string pointer from bx as 
 ; argument and prints it with the BIOS
 print:

@@ -1,3 +1,15 @@
+/* 
+    MIT License
+    (c) Antonio de Haro, 2020
+    See attached LICENSE file for more info
+
+
+    drivers/screen.h:
+
+    Main kernel API screen divers prototypes 
+
+*/
+
 #ifndef DRIVER_SCREEN
 #define DRIVER_SCREEN
 

@@ -1,3 +1,12 @@
+;
+; MIT License
+; (c) Antonio de Haro, 2020
+;
+; See attached LICENSE file for more info.
+;
+; boot/boot.asm:
+; Main bootloader file, defines the disk's bootsector
+
 [org 0x7c00] ; Global offset
 KERNEL_ENTRY equ 0x1000 ; This will store the location of the kernel entry point loaded from disk
 

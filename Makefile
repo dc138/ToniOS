@@ -1,3 +1,10 @@
+#
+# MIT License
+# (c) Antonio de Haro, 2020
+#
+# See attached LICENSE file for more info.
+#
+
 # Compiler version selection
 
 QEMU := /usr/bin/qemu-system-i386
