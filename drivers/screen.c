@@ -25,8 +25,11 @@ _________________________
 #define OFFSET_ROW(offset) (offset / (2 * MAX_COLS))
 #define OFFSET_COL(offset) ((offset - (OFFSET_ROW(offset) * 2 * MAX_COLS)) / 2)
 
+/* The currrent color used to write to the screen */
+static char current_color = COLOR(WHITE, BLACK);
+
 /* Gets the current cursor's position */
-static inline int get_cursor_offset() {
+static inline int get_cursor() {
     byte_out(VIDEO_CTRL, 14);
     int offset = byte_in(VIDEO_DATA) << 8;
 
@@ -37,7 +40,7 @@ static inline int get_cursor_offset() {
 }
 
 /* Sets the current cursor's position */
-static inline void set_cursor_offset(int offset) {
+static inline void set_cursor(int offset) {
     offset /= 2;
 
     byte_out(VIDEO_CTRL, 14);
@@ -48,13 +51,12 @@ static inline void set_cursor_offset(int offset) {
 }
 
 /* Prints a single character and returns the offset to the next one */
-static int charprint(char c, int col, int row, char attr) {
+static int charprint(char c, int col, int row) {
     unsigned char *video = (unsigned char *)VIDEO_ADDRESS;
-    if (!attr) attr = WHITE_ON_BLACK;
 
     if (col >= MAX_COLS || row >= MAX_ROWS) {
         video[2 * (MAX_COLS) * (MAX_ROWS)-2] = 'E';
-        video[2 * (MAX_COLS) * (MAX_ROWS)-1] = RED_ON_WHITE;
+        video[2 * (MAX_COLS) * (MAX_ROWS)-1] = COLOR(RED, WHITE);
         return OFFSET(col, row);
     }
 
@@ -65,11 +67,11 @@ static int charprint(char c, int col, int row, char attr) {
         offset = OFFSET(0, row + 1);
     } else {
         video[offset] = c;
-        video[offset + 1] = attr;
+        video[offset + 1] = current_color;
         offset += 2;
     }
 
-    set_cursor_offset(offset);
+    set_cursor(offset);
     return offset;
 }
 
@@ -81,16 +83,26 @@ _________________________
 
 */
 
+/* Set the current color for writting to the screen */
+void set_color(char c) {
+    current_color = c;
+}
+
+/* Get the current color for writting to the screen */
+char get_color() {
+    return current_color;
+}
+
 /* Clears the screen with blank characters */
 void clear() {
     char *screen = (char *)VIDEO_ADDRESS;
 
     for (int i = 0; i < MAX_COLS * MAX_ROWS; i++) {
         screen[i * 2] = ' ';
-        screen[i * 2 + 1] = WHITE_ON_BLACK;
+        screen[i * 2 + 1] = COLOR(WHITE, BLACK);
     }
 
-    set_cursor_offset(OFFSET(0, 0));
+    set_cursor(OFFSET(0, 0));
 }
 
 /* 
@@ -104,13 +116,13 @@ void print_at(char *message, int col, int row) {
     if (col >= 0 && row >= 0) {
         offset = OFFSET(col, row);
     } else {
-        offset = get_cursor_offset();
+        offset = get_cursor();
         row = OFFSET_ROW(offset);
         col = OFFSET_COL(offset);
     }
 
     for (int i = 0; message[i] != 0; i++) {
-        offset = charprint(message[i], col, row, WHITE_ON_BLACK);
+        offset = charprint(message[i], col, row);
 
         row = OFFSET_ROW(offset);
         col = OFFSET_COL(offset);
