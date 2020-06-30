@@ -22,7 +22,7 @@ void entry() {  // Defines the entry point for the kernel
     print("ToniOS");
 
     set_color(COLOR(LIGHT_GREY, BLACK));
-    print("!\n\n");
+    print("!\n\n\n");
 
     __asm__ __volatile__("hlt");  // Temporary
 }
