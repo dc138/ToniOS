@@ -24,6 +24,11 @@ bootloader capable of booting with a BIOS.
 A UEFI booting system, as well as other procesor architectures/platforms are 
 and will not be supported.
 
+## Current state
+
+The current kernel interface API currently only has public interface functions to
+write to and clear the screen, but I am currenty working on expanding it.
+
 ## Licensing
 
 This project is released under the MIT license.
