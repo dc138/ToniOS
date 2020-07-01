@@ -22,7 +22,7 @@ mov bx, info1
 call print ; Print info message
 
 mov bx, KERNEL_ENTRY ; Read data will be stored here
-mov dh, 16 ; Number of sectors to read
+mov dh, 32 ; Number of sectors to read
 mov dl, [BOOT_DRIVE] ; Drive to read from
 call disk_load
 
