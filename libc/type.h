@@ -22,5 +22,8 @@
 
 #define UNUSED(x) (void)(x)
 #define ASM(...) __asm__ __volatile__(__VA_ARGS__)
+#define STAY() \
+    for (;;) { \
+    }
 
 #endif

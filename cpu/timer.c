@@ -20,14 +20,8 @@ static uint32_t tick = 0;
 
 /* This will be called on each timer interrupt once the init_timer function has been setup */
 static void timer_callback(registers_t regs) {
+    UNUSED(regs);
     tick++;
-    print("Tick: ");
-
-    char tick_ascii[256];
-    itos(tick, tick_ascii);
-
-    print(tick_ascii);
-    print("\n");
 }
 
 /* Initialise the timer with the timer callback function */
