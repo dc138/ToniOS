@@ -14,6 +14,7 @@
 #include <drivers/keyboard.h>
 #include <drivers/screen.h>
 #include <kernel/kernel.h>
+#include <libc/mem.h>
 #include <libc/str.h>
 
 #define BACKSPACE 0x0E
@@ -41,15 +42,15 @@ static void keyboard_callback(registers_t regs) {
     if (scancode > SC_MAX) return;  // Unsupported key
 
     if (scancode == BACKSPACE) {
+        if (strlen(key_buffer) == 0) return;
+
         backspace(key_buffer);
         print_backspace();
-
     } else if (scancode == ENTER) {
         print("\n");
         input(key_buffer);  // Kernel-controlled function
 
-        key_buffer[0] = '\0';
-
+        memset(key_buffer, '\0', strlen(key_buffer));
     } else {
         char letter = sc_ascii[(int)scancode];
         char str[2] = {letter, '\0'};
@@ -60,5 +61,6 @@ static void keyboard_callback(registers_t regs) {
 }
 
 void init_keyboard() {
+    memset(key_buffer, '\0', 256);
     register_interrupt_handler(IRQ1, keyboard_callback);
 }
