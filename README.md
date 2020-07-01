@@ -1,6 +1,7 @@
 # ToniOS
 
-A very simple 32-bit i386 based OS with a simple monolithic kernel.
+A very simple 32-bit i386 based OS with a simple monolithic kernel. This OS
+is based in, among others, cfenollosa's wonderful os-tutorial *(https://github.com/cfenollosa/os-tutorial)*
 
 ## About
 
