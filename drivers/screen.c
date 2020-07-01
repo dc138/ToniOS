@@ -69,6 +69,9 @@ static int char_print(char c, int col, int row) {
     } else if (count == 1) {  // Sencond color char, indicates background
         current_color = COLOR(htoc(last_char), htoc(c));
         count--;
+    } else if (c == 0x08) {  // Backspace
+        video[offset] = ' ';
+        video[offset + 1] = current_color;
     } else {
         video[offset] = c;
         video[offset + 1] = current_color;
@@ -133,4 +136,12 @@ void print_at(char *message, int col, int row) {
 /* Prints a string on the cursor's position */
 void print(char *message) {
     print_at(message, -1, -1);
+}
+
+/* Removes the last character and returns the cursor one position back */
+void print_backspace() {
+    int offset = get_cursor() - 2;
+    int row = OFFSET_ROW(offset);
+    int col = OFFSET_COL(offset);
+    char_print(0x08, col, row);
 }

@@ -12,6 +12,7 @@
 #ifndef LIBC_TYPE
 #define LIBC_TYPE
 
+#include <stdbool.h>
 #include <stdint.h>
 
 #define low16(val) (uint16_t)((val)&0xFFFF)

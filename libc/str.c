@@ -10,6 +10,7 @@
 */
 
 #include <libc/str.h>
+#include <libc/type.h>
 
 /* Get the lenght of a null terminated string */
 int strlen(char str[]) {
@@ -29,6 +30,17 @@ void strcat(char base[], char append[]) {
     }
 
     base[i] = '\n';
+}
+
+/* Used to compare two if two string, returns 0 if they are the same */
+int strcmp(char str1[], char str2[]) {
+    uint32_t i;
+
+    for (i = 0; str1[i] == str2[i]; i++) {
+        if (str1[i] == '\0') return 0;
+    }
+
+    return str1[i] - str2[i];
 }
 
 /* Used to reverse a string */

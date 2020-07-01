@@ -16,6 +16,7 @@
 int strlen(char str[]);
 void reverse(char s[]);
 void strcat(char str1[], char str2[]);
+int strcmp(char str1[], char str2[]);
 
 void itos(int num, char str[]);
 char htoc(char ch);
