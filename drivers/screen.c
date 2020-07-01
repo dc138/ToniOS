@@ -81,8 +81,8 @@ static int char_print(char c, int col, int row) {
     /* Check if the offset is over screen size and scroll */
     if (offset >= MAX_ROWS * MAX_COLS * 2) {
         for (int i = 1; i < MAX_ROWS; i++)
-            memcpy(OFFSET(0, i) + (uint8_t *)VIDEO_ADDRESS,
-                   OFFSET(0, i - 1) + (uint8_t *)VIDEO_ADDRESS,
+            memcpy(OFFSET(0, i) + (char *)VIDEO_ADDRESS,
+                   OFFSET(0, i - 1) + (char *)VIDEO_ADDRESS,
                    MAX_COLS * 2);
 
         /* Blank last line */

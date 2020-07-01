@@ -15,7 +15,8 @@
 #include <libc/type.h>
 
 /* Memory manipulation rutines */
-void memcpy(uint8_t* source, uint8_t* dest, uint32_t bytes);
-void memset(uint8_t* dest, uint8_t val, uint32_t lenght);
+void memcpy(char* source, char* dest, size_t bytes);
+void memset(char* dest, char val, size_t lenght);
+int memcmp(char* source, char* dest, size_t lenght);
 
 #endif

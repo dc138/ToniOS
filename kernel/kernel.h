@@ -14,9 +14,6 @@
 
 #include <libc/type.h>
 
-/* Describes wether the OS is currently running */
-static bool running = true;
-
 void input(char* str);
 
 #endif

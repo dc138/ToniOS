@@ -92,7 +92,6 @@ void isr_install() {
 
 /* Installs both IRQ with one function call */
 void irq_install() {
-    ASM("sti");       // Enable interrupts
     init_timer(50);   // IRQ0: timer
     init_keyboard();  // IRQ1: keyboard
 }
