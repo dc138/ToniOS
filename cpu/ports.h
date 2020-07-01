@@ -4,7 +4,7 @@
 
     See attached LICENSE file for more info.
 
-    drivers/ports.h:
+    cpu/ports.h:
     Main kernel API port divers prototypes 
 
 */

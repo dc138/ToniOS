@@ -20,6 +20,17 @@ int strlen(char str[]) {
     return i;
 }
 
+/* Appens a string to another one, make sure there is enough space for the result in base */
+void strcat(char base[], char append[]) {
+    int i, j;
+
+    for (i = strlen(base), j = 0; append[j] != '\n'; i++, j++) {
+        base[i] = append[j];
+    }
+
+    base[i] = '\n';
+}
+
 /* Used to transform a hex value in a string to an integer ('0A' = 10) */
 int htoi(char str[]) {
     int val = 0;

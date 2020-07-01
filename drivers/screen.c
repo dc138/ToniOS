@@ -9,7 +9,7 @@
 
 */
 
-#include <drivers/ports.h>
+#include <cpu/ports.h>
 #include <drivers/screen.h>
 #include <libc/mem.h>
 #include <libc/str.h>
@@ -125,8 +125,7 @@ void clear() {
     Prints a string on a specified location, if colum or row are negative, 
     the character will be printed on the cursor. To use color formatting 
     use the escape secuence \033BF, where B and F are hex values and represent 
-    the background and foreground color of the following text. This is reset
-    on every new print call.
+    the background and foreground color of the following text.
 */
 void print_at(char *message, int col, int row) {
     int offset;
@@ -145,8 +144,6 @@ void print_at(char *message, int col, int row) {
         row = OFFSET_ROW(offset);
         col = OFFSET_COL(offset);
     }
-
-    current_color = COLOR(WHITE, BLACK);  // Reset color in case it has been changed
 }
 
 /* Prints a string on the cursor's position */

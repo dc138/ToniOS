@@ -9,8 +9,8 @@
 
 */
 
-#ifndef LIB_MEM
-#define LIB_MEM
+#ifndef LIBC_MEM
+#define LIBC_MEM
 
 /* Memory manipulation rutines */
 void memcpy(char* source, char* dest, int bytes);

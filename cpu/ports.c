@@ -4,12 +4,12 @@
 
     See attached LICENSE file for more info.
 
-    drivers/ports.c:
+    cpu/ports.c:
     Defines a way for the kernel to communicate with IO through ports 
 
 */
 
-#include <drivers/ports.h>
+#include <cpu/ports.h>
 
 void byte_out(unsigned short port, unsigned char data) {
     __asm__ __volatile__("out %%al, %%dx"

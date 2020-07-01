@@ -9,11 +9,12 @@
 
 */
 
-#ifndef LIB_STR
-#define LIB_STR
+#ifndef LIBC_STR
+#define LIBC_STR
 
 /* String rutines */
 int strlen(char str[]);
+void strcat(char str1[], char str2[]);
 
 void itos(int num, char str[]);
 char htoc(char ch);
