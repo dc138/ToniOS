@@ -11,17 +11,16 @@
 
 #include <libc/mem.h>
 
-/*
-_________________________
-
-    Public Kernel API
-_________________________
-
-*/
-
 /* Used to copy a number of bytes from source to destination */
-void memcpy(char* source, char* dest, int bytes) {
-    for (int i = 0; i < bytes; i++) {
+void memcpy(uint8_t* source, uint8_t* dest, uint32_t bytes) {
+    for (uint32_t i = 0; i < bytes; i++) {
         *(dest + i) = *(source + i);
+    }
+}
+
+/* Used to set an area of memory to a fixed value */
+void memset(uint8_t* dest, uint8_t val, uint32_t lenght) {
+    for (uint32_t i = 0; i < lenght; i++) {
+        *(dest + i) = val;
     }
 }

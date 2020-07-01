@@ -21,4 +21,7 @@ void itos(int num, char str[]);
 char htoc(char ch);
 int htoi(char str[]);
 
+void backspace(char str[]);
+void append(char str[], char val);
+
 #endif

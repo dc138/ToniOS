@@ -12,6 +12,8 @@
 #include <cpu/idt.h>
 #include <cpu/isr.h>
 #include <cpu/ports.h>
+#include <cpu/timer.h>
+#include <drivers/keyboard.h>
 #include <drivers/screen.h>
 #include <libc/mem.h>
 #include <libc/str.h>
@@ -86,6 +88,13 @@ void isr_install() {
     set_idt_gate(47, (uint32_t)irq15);
 
     set_idt();  // Load with ASM
+}
+
+/* Installs both IRQ with one function call */
+void irq_install() {
+    ASM("sti");       // Enable interrupts
+    init_timer(50);   // IRQ0: timer
+    init_keyboard();  // IRQ1: keyboard
 }
 
 /* To print the message which defines every exception */

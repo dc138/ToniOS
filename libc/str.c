@@ -89,3 +89,14 @@ void itos(int num, char str[]) {
 
     reverse(str);
 }
+
+/* Used to remove a character from a string */
+void backspace(char str[]) {
+    str[strlen(str) - 1] = '\0';
+}
+
+/* Used to append a character to a string, make sure that there is enough space for the new string */
+void append(char str[], char val) {
+    str[strlen(str)] = val;
+    str[strlen(str) + 1] = '\0';
+}

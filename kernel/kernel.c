@@ -19,10 +19,7 @@
 
 void entry() {  // Defines the entry point for the kernel
     isr_install();
-    ASM("sti");
-
-    init_timer(50);
-    init_keyboard();
+    irq_install();
 
     clear();
 
