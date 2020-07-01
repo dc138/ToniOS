@@ -14,3 +14,4 @@ global _start ; So nasm doesn't complaint about a missing _strart
 _start:
 [extern entry] ; Define calling point as an external symbol for the linker
 call entry
+jmp $

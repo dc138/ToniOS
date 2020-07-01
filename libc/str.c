@@ -31,6 +31,15 @@ void strcat(char base[], char append[]) {
     base[i] = '\n';
 }
 
+/* Used to reverse a string */
+void reverse(char s[]) {
+    for (int i = 0, j = strlen(s) - 1, c; i < j; i++, j--) {
+        c = s[i];
+        s[i] = s[j];
+        s[j] = c;
+    }
+}
+
 /* Used to transform a hex value in a string to an integer ('0A' = 10) */
 int htoi(char str[]) {
     int val = 0;
@@ -76,8 +85,7 @@ void itos(int num, char str[]) {
     } while ((num /= 10) > 0);
 
     if (sign < 0) str[i++] = '-';
+    str[i] = '\0';  // Make sure its null terminated
 
-    /* TODO: Implement string reverse */
-
-    str[i] = '\0';
+    reverse(str);
 }
