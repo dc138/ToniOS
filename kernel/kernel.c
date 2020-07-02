@@ -51,7 +51,7 @@ void input(char* str) {
     if (strcmp(str, "HELP") == 0) {
         print("\03370Available commands are: \033F0HELP\03370, \033F0ABOUT\03370, \033F0QUIT\03370 and \033F0CLEAR\03370.\n");
     } else if (strcmp(str, "ABOUT") == 0) {
-        print("\03370Currently running \033A0ToniOS \03370Kernel version \033A0V1.0.0 RELEASE\03370.\n");
+        print("\03370Currently running \033A0ToniOS \03370Kernel \033A0V1.0.0 RELEASE\03370.\n");
     } else if (strcmp(str, "QUIT") == 0) {
         print("\03370Shutting down, goodbye.");
         running = false;
