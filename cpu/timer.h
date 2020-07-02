@@ -16,6 +16,7 @@
 
 /* Initialise the timer with the timer callback function */
 void init_timer(uint32_t freq);
-void stop_timer();
+void reset_timer();
+uint32_t get_tick();
 
 #endif

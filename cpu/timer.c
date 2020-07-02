@@ -39,7 +39,12 @@ void init_timer(uint32_t freq) {
     byte_out(0x40, high);
 }
 
-/* Clears the interrupt handler */
-void stop_timer() {
-    register_interrupt_handler(IRQ0, NULL);
+/* Reset the tick */
+void reset_timer() {
+    tick = 0;
+}
+
+/* Get the current tick */
+uint32_t get_tick() {
+    return tick;
 }

@@ -15,10 +15,15 @@ _start:
 [extern entry] ; Define calling point as an external symbol for the linker
 call entry
 
+; If execution has reached this point, it means that the ACPI driver 
+; failed to shut down the computer, so just disable interrupts and
+; halt the system, a white 'E' on a red background will be printed
+; on the bottom right of the screen to indicate the error
+
 mov edx, 0xb8000 + 3998
-mov al, 0x51
+mov al, 0x45
 mov ah, 0xf4
 mov [edx], ax
 
 cli
-hlt
+hlt 
