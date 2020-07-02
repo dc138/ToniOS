@@ -33,6 +33,9 @@ void entry() {
 
     while (running) {
     }  // Wait here unit the kernel recieves the QUIT signal
+
+    isr_clear();  // Clear the interrupt service controller
+    irq_clear();  // Clear the interrupt request callbacks(keyboard and timer)
 }
 
 /* This function will be called every time some process whants the kernel to process something */

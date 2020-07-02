@@ -13,5 +13,6 @@
 #define DRIVER_KEYBOARD
 
 void init_keyboard();
+void stop_keyboard();
 
 #endif

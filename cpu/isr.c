@@ -90,10 +90,72 @@ void isr_install() {
     set_idt();  // Load with ASM
 }
 
+/* Clears the ISR tables that were previously installed */
+void isr_clear() {
+    set_idt_gate(0, NULL);
+    set_idt_gate(1, NULL);
+    set_idt_gate(2, NULL);
+    set_idt_gate(3, NULL);
+    set_idt_gate(4, NULL);
+    set_idt_gate(5, NULL);
+    set_idt_gate(6, NULL);
+    set_idt_gate(7, NULL);
+    set_idt_gate(8, NULL);
+    set_idt_gate(9, NULL);
+    set_idt_gate(10, NULL);
+    set_idt_gate(11, NULL);
+    set_idt_gate(12, NULL);
+    set_idt_gate(13, NULL);
+    set_idt_gate(14, NULL);
+    set_idt_gate(15, NULL);
+    set_idt_gate(16, NULL);
+    set_idt_gate(17, NULL);
+    set_idt_gate(18, NULL);
+    set_idt_gate(19, NULL);
+    set_idt_gate(20, NULL);
+    set_idt_gate(21, NULL);
+    set_idt_gate(22, NULL);
+    set_idt_gate(23, NULL);
+    set_idt_gate(24, NULL);
+    set_idt_gate(25, NULL);
+    set_idt_gate(26, NULL);
+    set_idt_gate(27, NULL);
+    set_idt_gate(28, NULL);
+    set_idt_gate(29, NULL);
+    set_idt_gate(30, NULL);
+    set_idt_gate(31, NULL);
+
+    // Install the IRQs
+    set_idt_gate(32, NULL);
+    set_idt_gate(33, NULL);
+    set_idt_gate(34, NULL);
+    set_idt_gate(35, NULL);
+    set_idt_gate(36, NULL);
+    set_idt_gate(37, NULL);
+    set_idt_gate(38, NULL);
+    set_idt_gate(39, NULL);
+    set_idt_gate(40, NULL);
+    set_idt_gate(41, NULL);
+    set_idt_gate(42, NULL);
+    set_idt_gate(43, NULL);
+    set_idt_gate(44, NULL);
+    set_idt_gate(45, NULL);
+    set_idt_gate(46, NULL);
+    set_idt_gate(47, NULL);
+
+    set_idt();  // Load with ASM
+}
+
 /* Installs both IRQ with one function call */
 void irq_install() {
     init_timer(50);   // IRQ0: timer
     init_keyboard();  // IRQ1: keyboard
+}
+
+/* Clear installed IRQs */
+void irq_clear() {
+    stop_timer();
+    stop_keyboard();
 }
 
 /* To print the message which defines every exception */
