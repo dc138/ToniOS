@@ -19,7 +19,7 @@ LD := /usr/local/i386elfgcc/bin/i386-elf-ld
 GDB := /usr/local/i386elfgcc/bin/i386-elf-gdb
 NASM := /usr/bin/nasm
 
-CFLAGS := -g -ffreestanding -Wall -Wextra -fno-exceptions -m32 -std=c99 -I. -O1
+CFLAGS := -g -ffreestanding -Wall -Wextra -fno-exceptions -m32 -std=c99 -I. -O0
 
 
 # Recursively finding project source files

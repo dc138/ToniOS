@@ -60,4 +60,4 @@ init_pm:
     mov esp, ebp
 
     sti ; Dont forgtet to re-enable interrupts
-    call begin_pm ; 7. Call a well-known label with useful code
+    jmp begin_pm ; 7. Call a well-known label with useful code

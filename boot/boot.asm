@@ -29,7 +29,7 @@ call disk_load
 mov bx, info2
 call print ; Print info message
 
-call switch_pm ; Start protected mode
+jmp switch_pm ; Start protected mode
 
 %include "print.asm"
 %include "disk.asm"
@@ -37,8 +37,7 @@ call switch_pm ; Start protected mode
 
 [bits 32]
 begin_pm: ; This will be called once the switch has been made
-    call KERNEL_ENTRY ; Give control to the kernel
-    hlt ; Stay here when the kernel returns control to us
+    jmp KERNEL_ENTRY ; Give control to the kernel
 
 BOOT_DRIVE db 0 ; Store the boot drive number given by BIOS
 info0 db "Starting 16-bit bootloader.", 0

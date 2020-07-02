@@ -32,7 +32,7 @@ void entry() {
     print("\03370$ ");
 
     while (running) {
-    }  // Wait here asyncronously handling interrupts until needed.
+    }  // Wait here unit the kernel recieves the QUIT signal
 }
 
 /* This function will be called every time some process whants the kernel to process something */
