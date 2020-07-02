@@ -15,9 +15,9 @@ _start:
 [extern entry] ; Define calling point as an external symbol for the linker
 call entry
 
-mov edx, 0xb8000
-mov al, 0x0
-mov ah, 0xf0
+mov edx, 0xb8000 + 3998
+mov al, 0x51
+mov ah, 0xf4
 mov [edx], ax
 
 cli

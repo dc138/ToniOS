@@ -88,7 +88,7 @@ $(BUILD)/kernel/kernel.elf: $(BUILD)/boot/entry.o $(COBJ) $(ASMOBJ)
 
 # Rule to compile this special kernel entry object file
 $(BUILD)/boot/entry.o: boot/entry.asm
-	$(NASM) $< -f elf -o $@
+	$(NASM) $< -f elf -o $@ -i boot/
 
 # There is still room for improvement here since we only need to recompile if 
 # the .c file required for this .o has changed, but I havent been able to do so.
