@@ -19,7 +19,7 @@
 #include <libc/type.h>
 
 /* Initialises the ACPI */
-int32_t acpi_init(void);
+int32_t acpi_init();
 
 /* Instructs the power controller to invoke a system shutdown */
 void acpi_poweroff();

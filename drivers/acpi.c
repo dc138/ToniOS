@@ -174,7 +174,7 @@ int32_t acpi_enable() {
 }
 
 /* Initialises the ACPI */
-int32_t acpi_init(void) {
+int32_t acpi_init() {
     uint32_t *ptr = acpi_get_rsd();
 
     // check if address is correct  ( if acpi is available on this pc )
