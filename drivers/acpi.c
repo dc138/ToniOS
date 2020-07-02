@@ -7,6 +7,9 @@
     drivers/acpi.c:
     Source file for the ACPI driver
 
+    This has been mostly taken from a marvelous code example. 
+    See: https://forum.osdev.org/viewtopic.php?t=16990
+
 */
 
 #include <drivers/acpi.h>

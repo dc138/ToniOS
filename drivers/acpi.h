@@ -7,6 +7,9 @@
     drivers/acpi.h:
     Header file for the ACPI driver
 
+    This has been mostly taken from a marvelous code example. 
+    See: https://forum.osdev.org/viewtopic.php?t=16990
+
 */
 
 #ifndef DRIVERS_ACPI
