@@ -38,3 +38,8 @@ void init_timer(uint32_t freq) {
     byte_out(0x40, low);
     byte_out(0x40, high);
 }
+
+/* Clears the interrupt handler */
+void stop_timer() {
+    register_interrupt_handler(IRQ0, NULL);
+}

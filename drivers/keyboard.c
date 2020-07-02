@@ -67,3 +67,7 @@ void init_keyboard() {
     memset(key_buffer, '\0', 256);
     register_interrupt_handler(IRQ1, keyboard_callback);
 }
+
+void stop_keyboard() {
+    register_interrupt_handler(IRQ1, NULL);
+}
