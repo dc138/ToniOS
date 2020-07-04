@@ -15,6 +15,7 @@
 #include <drivers/acpi.h>
 #include <drivers/keyboard.h>
 #include <drivers/screen.h>
+#include <kernel/defs.h>
 #include <kernel/kernel.h>
 #include <libc/str.h>
 #include <libc/type.h>
@@ -35,12 +36,14 @@ void entry() {
     print("\03370$ ");
 
     while (running) {
+        HLT();
     }  // Wait here unit the kernel recieves the QUIT signal
 
     stop_keyboard();  // Can only stop keyboard because we still need to rely on the timer
 
     reset_timer();
     while (get_tick() != 50) {
+        HLT();
     }
 
     acpi_poweroff();  // Instruct the ACPI to shut down the system

@@ -10,6 +10,7 @@
 */
 
 #include <cpu/idt.h>
+#include <kernel/defs.h>
 #include <libc/type.h>
 
 void set_idt_gate(int n, uint32_t handler) {

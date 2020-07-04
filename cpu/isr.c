@@ -15,6 +15,7 @@
 #include <cpu/timer.h>
 #include <drivers/keyboard.h>
 #include <drivers/screen.h>
+#include <kernel/defs.h>
 #include <libc/mem.h>
 #include <libc/str.h>
 #include <libc/type.h>
@@ -146,7 +147,8 @@ void isr_handler(registers_t regs) {
     print(exception_messages[regs.int_no]);
     print("\n");
 
-    ASM("hlt");
+    CLI();
+    HLT();
 }
 
 void register_interrupt_handler(uint8_t n, isr_t handler) {

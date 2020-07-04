@@ -13,6 +13,7 @@
 */
 
 #include <drivers/acpi.h>
+#include <kernel/defs.h>
 
 uint32_t *SMI_CMD;
 uint8_t ACPI_ENABLE;
@@ -151,6 +152,7 @@ int32_t acpi_enable() {
 
                 reset_timer();  // This expects the timer to alrady be initialised
                 while (get_tick() != 300) {
+                    HLT();
                 }
             }
             if (PM1b_CNT != 0)
@@ -161,6 +163,7 @@ int32_t acpi_enable() {
 
                     reset_timer();  // This expects the timer to alrady be initialised
                     while (get_tick() != 300) {
+                        HLT();
                     }
                 }
             if (i < 300) {
@@ -210,13 +213,17 @@ int32_t acpi_init() {
                             S5Addr += 5;
                             S5Addr += ((*S5Addr & 0xC0) >> 6) + 2;  // calculate PkgLength size
 
-                            if (*S5Addr == 0x0A)
+                            if (*S5Addr == 0x0A) {
                                 S5Addr++;  // skip byteprefix
+                            }
+
                             SLP_TYPa = *(S5Addr) << 10;
                             S5Addr++;
 
-                            if (*S5Addr == 0x0A)
+                            if (*S5Addr == 0x0A) {
                                 S5Addr++;  // skip byteprefix
+                            }
+                            
                             SLP_TYPb = *(S5Addr) << 10;
 
                             SMI_CMD = facp->SMI_CMD;

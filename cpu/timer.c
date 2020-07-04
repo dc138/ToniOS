@@ -13,6 +13,7 @@
 #include <cpu/ports.h>
 #include <cpu/timer.h>
 #include <drivers/screen.h>
+#include <kernel/defs.h>
 #include <libc/str.h>
 #include <libc/type.h>
 

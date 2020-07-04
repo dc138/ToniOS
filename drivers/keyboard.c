@@ -13,6 +13,7 @@
 #include <cpu/ports.h>
 #include <drivers/keyboard.h>
 #include <drivers/screen.h>
+#include <kernel/defs.h>
 #include <kernel/kernel.h>
 #include <libc/mem.h>
 #include <libc/str.h>
