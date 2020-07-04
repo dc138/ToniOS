@@ -1,7 +1,8 @@
 # ToniOS
 
 A very simple 32-bit i386 based OS with a simple monolithic kernel. This OS
-is based in, among others, cfenollosa's wonderful os-tutorial *(https://github.com/cfenollosa/os-tutorial)*.
+is based in, among others, cfenollosa's wonderful os-tutorial 
+*(https://github.com/cfenollosa/os-tutorial)*.
 
 ## About
 
@@ -27,8 +28,9 @@ and will not be supported.
 
 ## Current state
 
-The current kernel interface API currently only has public interface functions to
-write to and clear the screen, but I am currenty working on expanding it.
+The current kernel includes a input() function to make ir process a command, as 
+well as a ACPI driver and IRS setup with custom IRQs to process a timer and keyboard
+keys with a standard US keymap.
 
 ## Licensing
 
