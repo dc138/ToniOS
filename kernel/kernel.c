@@ -19,6 +19,7 @@
 #include <kernel/kernel.h>
 #include <libc/str.h>
 #include <libc/type.h>
+#include <libc/sleep.h>
 
 /* Describes wether the OS is currently running */
 static bool running = true;
@@ -40,11 +41,7 @@ void entry() {
     }  // Wait here unit the kernel recieves the QUIT signal
 
     stop_keyboard();  // Can only stop keyboard because we still need to rely on the timer
-
-    reset_timer();
-    while (get_tick() != 50) {
-        HLT();
-    }
+    sleep(1000);
 
     acpi_poweroff();  // Instruct the ACPI to shut down the system
 }

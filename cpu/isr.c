@@ -93,7 +93,7 @@ void isr_install() {
 
 /* Installs both IRQ with one function call */
 void irq_install() {
-    init_timer(50);   // IRQ0: timer
+    init_timer(1000);   // IRQ0: timer
     init_keyboard();  // IRQ1: keyboard
 }
 

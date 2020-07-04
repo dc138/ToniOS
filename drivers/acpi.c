@@ -14,6 +14,7 @@
 
 #include <drivers/acpi.h>
 #include <kernel/defs.h>
+#include <libc/sleep.h>
 
 uint32_t *SMI_CMD;
 uint8_t ACPI_ENABLE;
@@ -150,10 +151,7 @@ int32_t acpi_enable() {
                     break;
                 }
 
-                reset_timer();  // This expects the timer to alrady be initialised
-                while (get_tick() != 300) {
-                    HLT();
-                }
+                sleep(10);
             }
             if (PM1b_CNT != 0)
                 for (; i < 300; i++) {
@@ -161,10 +159,7 @@ int32_t acpi_enable() {
                         break;
                     }
 
-                    reset_timer();  // This expects the timer to alrady be initialised
-                    while (get_tick() != 300) {
-                        HLT();
-                    }
+                    sleep(10);
                 }
             if (i < 300) {
                 return 0;  // Enabled ACPI
