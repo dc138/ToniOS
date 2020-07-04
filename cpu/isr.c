@@ -91,10 +91,21 @@ void isr_install() {
     set_idt();  // Load with ASM
 }
 
+/* Removes the installed IRS */
+void isr_remove() {
+    // TODO: Implement
+}
+
 /* Installs both IRQ with one function call */
 void irq_install() {
     init_timer(1000);   // IRQ0: timer
     init_keyboard();  // IRQ1: keyboard
+}
+
+/* Removes the installed IRQs */
+void irq_remove() {
+    stop_timer();
+    stop_keyboard();
 }
 
 /* To print the message which defines every exception */

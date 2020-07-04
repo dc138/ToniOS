@@ -49,3 +49,13 @@ void reset_timer() {
 uint32_t get_tick() {
     return tick;
 }
+
+/* Stop the timer */
+void stop_timer() {
+    register_interrupt_handler(IRQ0, NULL);
+
+    // Send the command
+    byte_out(0x43, 0x36);
+    byte_out(0x40, 0x0);
+    byte_out(0x40, 0x0);
+}
